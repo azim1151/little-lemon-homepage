@@ -10,7 +10,7 @@ export default function HeroSection(){
             focused on traditional<br/>
             recipies served with<br/>
             a modern twist.</p>
-            <img src={servers} alt='starters image'/>
+            <img src={servers} alt='starters'/>
         </section>
     )
 }
