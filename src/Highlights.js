@@ -4,10 +4,11 @@ import lemonPie from './images/lemon dessert.jpg'
 
 export default function Highlights(){
     return(
-        <section>
+        <section className='flex_container'>
             <h1>Specials</h1>
             <button>Online Menu</button>
-             <article>
+            <section className='horizontal-flex'>
+            <article>
                  <img src={bruschetta} alt="Bruschetta"/>
                  <h2>Bruschetta</h2>
                 <p>Our Bruschetta is made from grilled 
@@ -27,6 +28,8 @@ export default function Highlights(){
                  every last ingredient has been sourced and is as 
                  authentic as can be imagined </p>
              </article>
+            </section>
+           
         </section>
     )
 };

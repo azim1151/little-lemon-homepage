@@ -2,9 +2,9 @@ import logo from './images/Logo.png'
 
 export default function Navbar(){
     return(
-    <section>
+    <section className='horizantal-flex'>
         <img src={logo} alt="Little Lemon logo"/>
-        <ul className="nav-links">
+        <ul className='horizontal-flex'>
             <li><a>Home</a></li>
             <li><a>About</a></li>
             <li><a>Menu</a></li>

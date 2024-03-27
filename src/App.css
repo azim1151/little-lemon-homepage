@@ -1,3 +1,59 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  margin: auto;
+}
+
+.flex_container{
+  display: flex;
+  flex-direction: column;
+  background-color: 495E57;
+}
+
+.horizontal-flex{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 10%;
+}
+
+.logo{
+  display: inline;
+  justify-content: center ;
+  max-height: 50%;
+  max-width: 50%;
+  border-radius: 0%;
+}
+
+.avatar{
+  max-width: 25%;
+  max-height: 25%;
+  border-radius: 50%;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-color: 495E57;
+  border: 5px;
+  border-radius: 16%;
+}
+img{
+ max-width:  25%;;
+ min-height: 25%;
+ border-radius: 16%;
+}
+
+button{
+  background-color: F4CE14;
+  border-radius: 16%;
+}
+
 /* .App {
   text-align: center;
 }
