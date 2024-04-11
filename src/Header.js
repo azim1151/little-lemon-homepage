@@ -4,7 +4,7 @@ import HeroSection from "./HeroSection"
 
 export default function Header(){
     return(
-        <section className='flex_container'>
+        <section className='header'>
             <Navbar/>
             <HeroSection/>
         </section>

@@ -3,14 +3,14 @@ import logo from './images/Asset 20@4x.png'
 
 export default function Footer() {
     return(
-        <section className='horizontal-flex'>
-            <div className='logo'>
-            <img src={logo} alt='logo' className='logo'/>
-            </div>
+        <section className='footer'>
           
-             <ul className='horizontal-flex'>
-                <article className='card'>
-                <h2>Doormat Navigation</h2>
+             <ul className='footer'>
+                <div className='logo'>
+                <img src={logo} alt='logo' className='logo'/>
+                </div>
+                <article >
+                <h2  className='markazi-text'>Doormat Navigation</h2>
                 <ul>
                    <li><a>Home</a></li>
                    <li><a>About</a></li>
@@ -20,25 +20,22 @@ export default function Footer() {
                    <li><a>Login</a></li>
                 </ul>
                 </article>
-             
-                <article className='card'>
-                <h2>Contact</h2>
+                <article >
+                <h2  className='markazi-text'>Contact</h2>
                 <ul>
                     <li><a>Address</a></li>
                     <li><a>Phone number</a></li>
                     <li><a>Email</a></li>
                 </ul>
                 </article>
-                
-                <article className='card'>
-                <h2>Social Media Links</h2>
+                <article >
+                <h2  className='markazi-text'>Social Media Links</h2>
                 <ul>
                     <li><a>Facebook</a></li>
                     <li><a>Instagram</a></li>
                     <li><a>Twitter</a></li>
                 </ul>
                 </article>
-               
              </ul>
         </section>
         

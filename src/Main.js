@@ -4,10 +4,10 @@ import Highlights from "./Highlights"
 
 export default function Main (){
     return(
-        <section className="flex_container">
+        <section className="main">
               <Highlights/>
-            <About/>
            <Testimonials/>
+           <About/>
         </section>
     )
 }
