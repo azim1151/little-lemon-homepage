@@ -1,4 +1,5 @@
 import logo from './images/Asset 20@4x.png'
+import { Link } from 'react-router-dom'
 
 
 export default function Footer() {
@@ -12,28 +13,37 @@ export default function Footer() {
                 <article >
                 <h2  className='markazi-text'>Doormat Navigation</h2>
                 <ul>
-                   <li><a>Home</a></li>
-                   <li><a>About</a></li>
-                   <li><a>Menu</a></li>
-                   <li><a>Reservations</a></li>
-                   <li><a>Online Order</a></li>
-                   <li><a>Login</a></li>
+                    <li>
+                    <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                    <Link to='/about'>About</Link>
+                    </li>
+                    <li>
+                    <Link to='/highlights'>Specials</Link>
+                    </li>
+                    <li>
+                    <Link to='/testimonials'>Testimonials</Link>
+                    </li>
+                    <li>
+                    <Link to='/reservations'>Reservations</Link>
+                    </li>
                 </ul>
                 </article>
                 <article >
                 <h2  className='markazi-text'>Contact</h2>
                 <ul>
-                    <li><a>Address</a></li>
-                    <li><a>Phone number</a></li>
-                    <li><a>Email</a></li>
+                    <li>Address</li>
+                    <li>Phone number</li>
+                    <li>Email</li>
                 </ul>
                 </article>
                 <article >
                 <h2  className='markazi-text'>Social Media Links</h2>
                 <ul>
-                    <li><a>Facebook</a></li>
-                    <li><a>Instagram</a></li>
-                    <li><a>Twitter</a></li>
+                    <li>Facebook</li>
+                    <li>Instagram</li>
+                    <li>Twitter</li>
                 </ul>
                 </article>
              </ul>

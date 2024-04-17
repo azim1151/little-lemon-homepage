@@ -3,10 +3,15 @@ import adrian from './images/Mario and Adrian b.jpg'
 
 export default function About(){
     return(
-        <section className='horizontal-flex'>
-        <p className='markazi-text'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        <section className='about'>
+            <article className='main-name'>
+                <h1 className='markazi-text-name-title'>Little Lemon</h1>
+                <h2>Chicago</h2>
+                <p className='markazi-text'>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. </p>
-        <article >
+            </article>
+       
+        <article className='horizontal-flex' >
         <img src={mario} alt='Mario and Adrian' className='smaller_img'/>
         <img src={adrian} alt='Mario and Adrian'className='smaller_img'/>
         </article>
