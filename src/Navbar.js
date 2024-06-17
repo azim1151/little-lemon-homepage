@@ -1,5 +1,6 @@
 
 import logo from './images/Logo.png'
+import hamburgerMenu from './images/🦆 icon _hamburger menu.png'
 import { Link } from 'react-router-dom'
 
 export default function Navbar(){
@@ -13,6 +14,7 @@ export default function Navbar(){
                 <Link to='/testimonials'>Testimonials</Link>
                 <Link to='/reservations'>Reservations</Link>
         </ul>
+        <img src={hamburgerMenu} alt='hamburger menu'/>
     </section>  
     ) 
 }

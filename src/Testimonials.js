@@ -5,7 +5,7 @@ import PersonCard from './PersonCard'
 
 export default function Testimonials(){
     return(
-        <section className='flex_container'>
+        <section className='confirmation'>
             <h1>Testimonials</h1>
         <section className='horizontal-flex'>
             <PersonCard

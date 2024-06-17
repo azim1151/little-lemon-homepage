@@ -53,13 +53,14 @@ export default function Highlights(){
 
     const listItems = specials.map(item=>
                                                 <SpecialsCard
+                                                key = {item.id}
                                                 img={item.img}
                                                 text={item.text}/>
                                             )
     return(
-        <section className='flex_container'>
-            <h1>Specials</h1>
-            <button>Online Menu</button>
+        <section className='confirmation'>
+            <h1 style={{fontSize:'3em'}}>Specials</h1>
+            <button style={{backgroundColor: '#495E57', color:'#EDEFEE'}}>Online Menu</button>
             <section className='horizontal-flex'>
                 {listItems}
             </section>
