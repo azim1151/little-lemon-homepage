@@ -1,8 +1,5 @@
 
 
-// const today = new Date().getDate();
-
-// const month = new Date().getMonth();
 
 const seededRandom = function (seed) {
     var m = 2**35 - 31;
@@ -16,13 +13,14 @@ const seededRandom = function (seed) {
 export function fetchAPI (date) {
     let result = [];
     let random = seededRandom(new Date(date).getDate());
+    
 
     for(let i = 17; i < 23; i++) {
         if(random() < 0.5) {
             result.push({time:i + ':00', day: date, isAvailable:true});
         }
         else {
-            result.push({time:i + ':00',day:date, isAvailable:false});
+            result.push({time:i + ':00', day:date, isAvailable:false});
         }
     }
    

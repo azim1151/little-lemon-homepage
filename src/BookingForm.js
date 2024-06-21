@@ -3,6 +3,8 @@
 
 export default function BookingForm({booking,availableTimes,handleFirstName,handleLastName,handleDate,handleAvailableTimes,handleGuests,handleOccasion,handleSubmit, validation}){
 
+   
+  
 
     return(
         <div>
@@ -33,13 +35,15 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
                 </div>
                 <div className="field">
                     <label htmlFor="res-time">Choose time</label>
+                 
                     <select id="res-time" value={availableTimes} placeholder="time" onChange={handleAvailableTimes}>
                       <option key={1}>Pick one</option>
-                      {availableTimes.map(t => t.day === booking.date && t.isAvailable ? <option key={t.time +t.day}>{t.time}</option>:null)}
+                      {availableTimes.map((t) => t.day === booking.date && t.isAvailable ? <option key={t.time}>{t.time}</option>:null)}
                     </select>
                 </div>
                 <div className="field">
                 <label htmlFor="guests">Number of Guests</label>
+              
                     <input type="number" 
                             id="guests" 
                             min={1} max={10}
