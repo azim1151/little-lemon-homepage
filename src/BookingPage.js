@@ -1,22 +1,14 @@
 import fish from './images/Grilled fish.jpeg'
 import BookingForm from './BookingForm'
 import BookingSlot from './BookingSlot'
-import { useState, useReducer } from 'react'
+import { useState, useReducer} from 'react'
 import { submitAPI,fetchAPI } from './APi'
 import { useNavigate } from 'react-router-dom'
+import { initialTimings } from './AvailableTimes'
 
 
 const prevDate = new Date();
 const today =prevDate.toISOString().split('T')[0];
-// const initializeState =()=>{
-//    // let availableTimes;
-//    // if(!window.localStorage.getItem('availableTimes')){
-//     const  availableTimes = fetchAPI(today)
-//    // }else{availableTimes = JSON.parse(localStorage.getItem('availableTimes')) }
-//    // console.log(availableTimes)
-//    return availableTimes;
-// }
-const timings = fetchAPI(today)
 
 export default function BookingPage(){
     
@@ -29,7 +21,7 @@ export default function BookingPage(){
         lastName:'',
         isDisabled :true
      });
-   
+     
      const [validation, setValidation] = useState('');
      const navigate = useNavigate();
      const [temp,setTemp] = useState([])
@@ -67,7 +59,7 @@ export default function BookingPage(){
         }
      };
 
-     const [state, dispatch] = useReducer(reducer,timings);
+     const [state, dispatch] = useReducer(reducer,today, initialTimings);
 
      const handleAvailableTimes = (e)=>{
         setBooking({...booking, time:e.target.value})
@@ -82,9 +74,9 @@ export default function BookingPage(){
 
      const handleSubmit =(e)=>{
         e.preventDefault();
+        window.localStorage.setItem('availableTimes', JSON.stringify(state))
       if(submitAPI(booking)) navigate('/confirmedbooking',{state:booking});
         
-      window.localStorage.setItem('availableTimes', JSON.stringify(state))
         console.log(booking, state);
         setBooking({firstName:'',
                     lastName:'',
@@ -121,7 +113,7 @@ export default function BookingPage(){
        
      const handleLastName =(e)=> setBooking({...booking,lastName:e.target.value});
      
-     const month = new Date(booking.date).getMonth();
+     const month = new Date(booking.date).getMonth() +1;
      const dayOfMonth = new Date(booking.date).getDate()+1;
      
      
@@ -131,7 +123,7 @@ export default function BookingPage(){
             <img src={fish} alt='Grilled Fish'/>
             <h1>Booking times available for {month}/{dayOfMonth}</h1>
             <div className='slots'>
-                {state.map((t) => t.day === booking.date ?<BookingSlot isAvailable={t.isAvailable} timeSlot={t.time} /> : null) }
+                {state.map((t) => t.day === booking.date ?<BookingSlot key={t.time} isAvailable={t.isAvailable} timeSlot={t.time} /> : null) }
             </div>
            <BookingForm
            booking = {booking}

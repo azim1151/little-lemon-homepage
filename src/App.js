@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import About from './About';
 import Highlights from './Highlights';
 import Testimonials from './Testimonials';
-import BookingPage from './Booking';
+import BookingPage from './BookingPage';
 import Main from './Main';
 import ConfirmedBooking from './ConfirmedBooking';
 
