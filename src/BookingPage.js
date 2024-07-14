@@ -18,11 +18,14 @@ export default function BookingPage(){
         guests: 1,
         occasion: '',
         firstName: '',
-        lastName:'',
-        isDisabled :true
+        lastName:''
      });
-     
-     const [validation, setValidation] = useState('');
+
+     const [req, setReq] = useState({
+      firstName:'',
+      lastName:''
+     })
+ 
      const navigate = useNavigate();
      const [temp,setTemp] = useState([])
      
@@ -83,8 +86,7 @@ export default function BookingPage(){
                     date:today,
                     time:'',
                     guests:1,
-                    occasion:'',
-                    isDisabled:true
+                    occasion:''
         })
        
      };
@@ -100,18 +102,17 @@ export default function BookingPage(){
         console.log(state)
     };
 
-     const handleGuests =(e)=>setBooking({...booking, guests:e.target.value});
+     const handleGuests =(e)=>setBooking({...booking, guests:e.target.value})
      
      const handleOccasion =(e)=>{
         setBooking({...booking,occasion:e.target.value})}
 
-     const handleFirstName =(e)=>  {setBooking({...booking,firstName:e.target.value});
-        if(booking.firstName.length<3){setValidation('This is a required field'); setBooking({...booking,firstName:e.target.value})}else{
-    setBooking({...booking,firstName:e.target.value,}); setValidation('');
-        }
-    }
-       
-     const handleLastName =(e)=> setBooking({...booking,lastName:e.target.value});
+     const handleFirstName =(e)=> {
+      setBooking({...booking,firstName:e.target.value});
+      e.target.value.length < 3 ? setReq({...req,firstName:'Name should be atleast 3 characters long'}):setReq({...req,firstName:''})}
+     
+      const handleLastName =(e)=> {setBooking({...booking,lastName:e.target.value});
+      e.target.value.length < 3 ? setReq({...req,lastName:'Name should be atleast 3 characters long'}):setReq({...req,lastName:''})};
      
      const month = new Date(booking.date).getMonth() +1;
      const dayOfMonth = new Date(booking.date).getDate()+1;
@@ -134,8 +135,8 @@ export default function BookingPage(){
            availableTimes={state}
            handleGuests={handleGuests}
            handleOccasion={handleOccasion}
-           handleSubmit={handleSubmit}
-           validation = {validation} />
+           handleSubmit={handleSubmit} 
+           req ={req}/>
            
         </section>
     )

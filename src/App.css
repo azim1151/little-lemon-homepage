@@ -295,8 +295,15 @@ a {
 a:hover{
   color: #EE9972;
 }
-a:visited{
+ a:visited{
   color: #F4CE14;
+}
+
+input :focus:invalid {
+  border: 2px solid red;
+}
+input:invalid + span::after {
+  content: "✖";
 }
 /* .App {
   text-align: center;

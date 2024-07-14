@@ -48,7 +48,7 @@ test('the booking times are initialized when the form is submitted',()=>{
  
   render(< BookingPage onSubmit = {handleSubmit}/>,{wrapper:BrowserRouter});
   const dateInput = screen.getByLabelText('Choose date');
-  fireEvent.change(dateInput,{target:{value:'2024-07-25'}});
+  fireEvent.change(dateInput,{target:{value:'2024-11-25'}});
 
   const timeInput = screen.getByLabelText('Choose time')
   fireEvent.change(timeInput,{target:{value:'18:00'}})

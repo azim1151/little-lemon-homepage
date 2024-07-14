@@ -1,10 +1,16 @@
 
 
 
-export default function BookingForm({booking,availableTimes,handleFirstName,handleLastName,handleDate,handleAvailableTimes,handleGuests,handleOccasion,handleSubmit, validation}){
+export default function BookingForm({booking,availableTimes,handleFirstName,handleLastName,handleDate,handleAvailableTimes,handleGuests,handleOccasion,handleSubmit,req}){
 
-   
-  
+    const prevDate = new Date();
+    const today =prevDate.toISOString().split('T')[0];
+    let endDate = new Date(prevDate.setDate(prevDate.getDate() + 28));
+
+    endDate = endDate.toISOString().split('T')[0];
+    let ans = ''
+    if(booking.guests < 1){ ans ='Need atleast 1 guest to book'}
+    if(booking.guests > 15){ans ='Sorry, no more than 10 guests'};
 
     return(
         <div>
@@ -12,38 +18,44 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
             <fieldset>
             <div className="field">
                     <label htmlFor="firstName">First Name *</label>
-                    <p>{validation}</p>
+                    <p>{req.firstName}</p>
                     <input type="text" id="firstName"
                     autoFocus
                     minLength={3} maxLength={15}
                     value={booking.firstName}
                      onChange={handleFirstName}
+                     required
                      />
                 </div>
                 <div className="field">
                     <label htmlFor="lastName">Last Name</label>
+                    <p>{req.lastName}</p>
                     <input type="text" id="lastName"
                     value={booking.lastName}
-                     onChange={handleLastName}/>
+                     onChange={handleLastName}
+                     required/>
                 </div>
                 <div className="field">
                     <label htmlFor="res-date">Choose date</label>
                
                     <input type="date" id="res-date"
                     value={booking.date}
-                     onChange={handleDate}/>
+                    min={today}
+                    max={endDate}
+                     onChange={handleDate}
+                     required/>
                 </div>
                 <div className="field">
                     <label htmlFor="res-time">Choose time</label>
                  
-                    <select id="res-time" value={availableTimes} placeholder="time" onChange={handleAvailableTimes}>
+                    <select id="res-time" value={availableTimes} placeholder="time" onChange={handleAvailableTimes} required>
                       <option key={1}>Pick one</option>
                       {availableTimes.map((t) => t.day === booking.date && t.isAvailable ? <option key={t.time}>{t.time}</option>:null)}
                     </select>
                 </div>
                 <div className="field">
                 <label htmlFor="guests">Number of Guests</label>
-              
+                <p>{ans}</p>
                     <input type="number" 
                             id="guests" 
                             min={1} max={10}
@@ -57,9 +69,9 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
                         <option>Pick one</option>    
                         <option >Birthday</option>
                         <option >Anniversary</option>
-                    </select>
+                    </select><span></span>
                 </div>
-                <button type="submit" >Reserve a Table</button>
+                <button type="submit" disabled ={booking.firstName.length < 3 || booking.lastName < 3 || booking.time.length < 3}>Reserve a Table</button>
             </fieldset>
         </form>
        
