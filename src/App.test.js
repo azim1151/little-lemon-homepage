@@ -15,14 +15,19 @@ test('renders BookingPage heading, fields and labels on the form', ()=>{
   const handleSubmit = jest.fn();
   render(<BookingPage onSubmit ={handleSubmit} />,{wrapper:BrowserRouter});
   const headingElement = screen.getByText("Book a Table");
-  const guestsLabel = screen.getByText('Number of Guests');
+  const guestsLabel = screen.getByLabelText('Number of Guests');
   const dateLabel =screen.getByLabelText('Choose date');
   const timeLabel =screen.getByLabelText('Choose time');
   const occasionLabel =screen.getByLabelText('Occasion');
   expect(headingElement).toBeInTheDocument();
   expect(guestsLabel).toBeInTheDocument();
+  expect(guestsLabel).toHaveAttribute('min',"1");
+  expect(guestsLabel).toHaveAttribute('max','10');
   expect(dateLabel).toBeInTheDocument();
+  expect(dateLabel).toHaveAttribute('min');
+  expect(dateLabel).toHaveAttribute('max');
   expect(timeLabel).toBeInTheDocument();
+  expect(timeLabel).toHaveAttribute('required')
   expect(occasionLabel).toBeInTheDocument();
 })
 
@@ -74,4 +79,37 @@ test('the booking times are updated when time is selected',()=>{
 
   const timeChange = screen.getByText('Booked' && '18:00')
   expect(timeChange).toBeInTheDocument();
+})
+
+test('when the inputs are valid the submit button is no longer disabled',()=>{
+  const handleSubmit = jest.fn();
+  render(< BookingPage onSubmit = {handleSubmit}/>,{wrapper:BrowserRouter});
+  const firstNameInput = screen.getByLabelText('First Name *');
+  fireEvent.change(firstNameInput,{target:{value:'Anne'}});
+  const lastNameInput = screen.getByLabelText('Last Name *');
+  fireEvent.change(lastNameInput,{target:{value:'Park'}});
+  const dateInput = screen.getByLabelText('Choose date');
+  fireEvent.change(dateInput,{target:{value:'2024-11-25'}});
+  const timeInput = screen.getByLabelText('Choose time');
+  fireEvent.change(timeInput,{target:{value:'18:00'}})
+  const guestsInput = screen.getByLabelText('Number of Guests');
+  fireEvent.change(guestsInput,{target:{value:5}});
+  const submitButton =screen.getByRole('button');
+  expect(submitButton).not.toBeDisabled();
+})
+
+test('when the inputs are invalid the submit button is disabled',()=>{
+  const handleSubmit = jest.fn();
+  render(< BookingPage onSubmit = {handleSubmit}/>,{wrapper:BrowserRouter});
+  const firstNameInput = screen.getByLabelText('First Name *');
+  fireEvent.change(firstNameInput,{target:{value:'An'}});
+  const lastNameInput = screen.getByLabelText('Last Name *');
+  fireEvent.change(lastNameInput,{target:{value:'Pa'}});
+  const dateInput = screen.getByLabelText('Choose date');
+  fireEvent.change(dateInput,{target:{value:'2024-11-25'}});
+  const timeInput = screen.getByLabelText('Choose time');
+  const guestsInput = screen.getByLabelText('Number of Guests');
+  fireEvent.change(guestsInput,{target:{value:15}});
+  const submitButton =screen.getByRole('button');
+  expect(submitButton).toBeDisabled();
 })

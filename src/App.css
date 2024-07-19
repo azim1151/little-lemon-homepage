@@ -231,7 +231,10 @@
   align-items: center;
   justify-content: center;
 }
-
+.corrector {
+  color: red;
+  font-size: small;
+}
 .available {
   background-color: #F4CE14;
   color: #495E57;
@@ -281,6 +284,10 @@ button{
   font-size: 1.5em;
 }
 
+button:disabled {
+  background-color: #F4CE14;
+  color:#EDEFEE;
+}
 h1{
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
@@ -289,22 +296,16 @@ h1{
   font-size: 3em;
 }
 
-a {
+a{
  color: black ;
 }
 a:hover{
   color: #EE9972;
 }
- a:visited{
+ :visited{
   color: #F4CE14;
 }
 
-input :focus:invalid {
-  border: 2px solid red;
-}
-input:invalid + span::after {
-  content: "✖";
-}
 /* .App {
   text-align: center;
 }

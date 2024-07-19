@@ -18,7 +18,7 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
             <fieldset>
             <div className="field">
                     <label htmlFor="firstName">First Name *</label>
-                    <p>{req.firstName}</p>
+                    <p className="corrector">{req.firstName}</p>
                     <input type="text" id="firstName"
                     autoFocus
                     minLength={3} maxLength={15}
@@ -28,8 +28,8 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
                      />
                 </div>
                 <div className="field">
-                    <label htmlFor="lastName">Last Name</label>
-                    <p>{req.lastName}</p>
+                    <label htmlFor="lastName">Last Name *</label>
+                    <p className="corrector">{req.lastName}</p>
                     <input type="text" id="lastName"
                     value={booking.lastName}
                      onChange={handleLastName}
@@ -54,8 +54,8 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
                     </select>
                 </div>
                 <div className="field">
-                <label htmlFor="guests">Number of Guests</label>
-                <p>{ans}</p>
+                <label htmlFor="guests">Number of Guests </label>
+                <p className="corrector">{ans}</p>
                     <input type="number" 
                             id="guests" 
                             min={1} max={10}
@@ -71,7 +71,7 @@ export default function BookingForm({booking,availableTimes,handleFirstName,hand
                         <option >Anniversary</option>
                     </select><span></span>
                 </div>
-                <button type="submit" disabled ={booking.firstName.length < 3 || booking.lastName < 3 || booking.time.length < 3}>Reserve a Table</button>
+                <button aria-label='on click reserve table' type="submit" disabled ={booking.firstName.length < 3 || booking.lastName < 3 || booking.time.length < 3 || booking.guests > 10 || booking.guests < 0}>Reserve a Table</button>
             </fieldset>
         </form>
        
