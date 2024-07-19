@@ -42,7 +42,7 @@ import lemonCake from './images/lemon dessert.jpg'
             <img src={lemonCake} alt="Lemon Cake"/>
             <h1>Your table for {''+ booking.guests} has been confirmed for </h1>
             <h1> {weekdays[day]}, {''+ months[month]} {''+ dayOfMonth +''} at {oclock} </h1>
-            <h1>You're going to have a great {booking.occasion[0]!== 'P'? booking.occasion :'time'}!</h1>
+            <h1>You're going to have a great {booking.occasion[0]!== 'P' && booking.occasion.length>1? booking.occasion :'time'}!</h1>
             </div>
           
         </div>
